@@ -1,17 +1,27 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd"
        default-autowire="byName"
-       default-lazy-init="false">
+       default-lazy-init="true">
+
+
     <!-- 不加default-autowire="byName" 会得不到hibernateTemplate -->
 
     <!-- 配置spring扫描注解的范围 -->
-    <context:component-scan base-package="org.llsmp.**"/>
+    <context:component-scan base-package="org.llsmp.model.**"/>
 
     <!-- 定义占位符所在的文件 -->
-    <context:property-placeholder location="jdbc.properties"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- 配置数据源，使用了占位符 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
@@ -25,9 +35,29 @@
     <!-- 配置sessionFactory，使用了占位符 -->
 
 
-    <bean id="sessionFactory">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 全包扫描必须设置成实体类的上两层以上包！！！ -->
+        <property name="packagesToScan" value="org.llsmp.model.**"/>
 
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="connection.useUnicode">true</prop>
+                <prop key="connection.characterEncoding">UTF-8</prop>
+                <prop key="hibernate.format_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager" lazy-init="false">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="globalRollbackOnParticipationFailure" value="false"/>
     </bean>
 
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>

@@ -1,4 +1,4 @@
-package org.llsmp.model.dao.model.entity;
+package org.llsmp.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

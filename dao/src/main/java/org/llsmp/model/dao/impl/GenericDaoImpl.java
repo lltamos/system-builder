@@ -1,7 +1,7 @@
 package org.llsmp.model.dao.impl;
 
 import org.llsmp.model.dao.GenericDao;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class GenericDaoImpl extends HibernateDaoSupport implements GenericDao {
 
+    HibernateDaoSupport hebernateDao;
+
+    public void setHebernateDao(HibernateDaoSupport hebernateDao) {
+        this.hebernateDao = hebernateDao;
+    }
+
     public <T> void save(T t) {
+
         getHibernateTemplate().save(t);
     }
 
