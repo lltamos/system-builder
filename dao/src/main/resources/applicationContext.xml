@@ -14,5 +14,20 @@
     <context:property-placeholder location="jdbc.properties"/>
 
     <!-- 配置数据源，使用了占位符 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+    </bean>
+
+
+    <!-- 配置sessionFactory，使用了占位符 -->
+
+
+    <bean id="sessionFactory">
+
+    </bean>
+
 
 </beans>
