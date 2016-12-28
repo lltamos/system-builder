@@ -6,36 +6,4 @@
 
 <struts>
 
-    <!--<constant name="struts.enable.DynamicMethodInvocation" value="false" />-->
-    <!--<constant name="struts.devMode" value="true" />-->
-    <!--<constant name="struts.objectFactory" value="spring" />-->
-
-    <package name="default" namespace="/" extends="struts-default">
-
-        <!--<default-action-ref name="index" />-->
-
-        <!--<global-results>-->
-            <!--<result name="error">/error.jsp</result>-->
-        <!--</global-results>-->
-
-        <!--<global-exception-mappings>-->
-            <!--<exception-mapping exception="java.lang.Exception"-->
-                               <!--result="error" />-->
-        <!--</global-exception-mappings>-->
-
-        <!--<action name="regUser">-->
-            <!--<result>/WEB-INF/page/registerUser.jsp</result>-->
-        <!--</action>-->
-
-        <!--<action name="*User" class="userAction" method="{1}">-->
-            <!--<result>/WEB-INF/page/{1}User.jsp</result>-->
-        <!--</action>-->
-
-        <action name="useraction" class="org.llsmp.model.action.UserAction">
-            <result name="success">/hi.jsp</result>
-        </action>
-    </package>
-
-
-
 </struts>
