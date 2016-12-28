@@ -24,12 +24,18 @@
         <processorPath useClasspath="true" />
         <module name="dao" />
         <module name="entity" />
+        <module name="service" />
+        <module name="web" />
+        <module name="webapp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="dao" target="1.5" />
       <module name="entity" target="1.5" />
+      <module name="service" target="1.5" />
       <module name="system-builder" target="1.5" />
+      <module name="web" target="1.5" />
+      <module name="webapp" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

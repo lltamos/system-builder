@@ -23,6 +23,8 @@ public class User {
     private String name;
     private String password;
 
+            
+
     @Id
     @GeneratedValue
     public int getId() {

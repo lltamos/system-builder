@@ -19,12 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class GenericDaoImpl extends HibernateDaoSupport implements GenericDao {
 
-    HibernateDaoSupport hebernateDao;
-
-    public void setHebernateDao(HibernateDaoSupport hebernateDao) {
-        this.hebernateDao = hebernateDao;
-    }
-
     public <T> void save(T t) {
 
         getHibernateTemplate().save(t);

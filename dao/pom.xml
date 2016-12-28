@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.llsmp</groupId>
             <artifactId>entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <!-- c3p0数据源 -->
         <dependency>
@@ -124,7 +124,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
