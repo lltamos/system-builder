@@ -1,12 +1,9 @@
+package dao;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.llsmp.model.dao.GenericDao;
 import org.llsmp.model.entity.User;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -30,7 +27,7 @@ public class TestUserDao {
     @Test
     public void testSave() {
         User user = new User();
-        user.setName("张文1");
+        user.setName("张文11");
         user.setPassword("23");
         dao.save(user);
     }

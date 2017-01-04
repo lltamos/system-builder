@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class GenericDaoImpl extends HibernateDaoSupport implements GenericDao {
 
     public <T> void save(T t) {
-
+     
         getHibernateTemplate().save(t);
     }
 

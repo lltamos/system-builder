@@ -34,11 +34,10 @@
 
     <!-- 配置sessionFactory，使用了占位符 -->
 
-
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!-- 全包扫描必须设置成实体类的上两层以上包！！！ -->
-        <property name="packagesToScan" value="org.llsmp.model.**"/>
+        <property name="packagesToScan" value="org.llsmp.model.entity"/>
 
         <property name="hibernateProperties">
             <props>
@@ -50,6 +49,8 @@
                 <prop key="hibernate.format_sql">true</prop>
             </props>
         </property>
+
+
     </bean>
     <!-- 配置事务管理器 -->
     <bean id="transactionManager"
@@ -60,4 +61,18 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
+    <!--公共模板-->
+
+
+    <!--action-->
+    <bean id="employeeAction" class="org.llsmp.model.action.EmployeeAction" scope="prototype"/>
+
+    <!--dao-->
+    <bean id="employeeDao" class="org.llsmp.model.dao.impl.EmployeeDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <!--service-->
+    <bean id="employeeService" class="org.llsmp.model.server.impl.EmployeeServiceImpl"/>
 </beans>
