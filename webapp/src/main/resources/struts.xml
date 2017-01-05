@@ -22,14 +22,18 @@
     <constant name="struts.objectFactory" value="spring"/>
 
 
-    <package name="catsic" extends="parent" strict-method-invocation="false" namespace="/employee">
+    <package name="employee" extends="parent" strict-method-invocation="false" namespace="/employee">
         <action name="*" class="employeeAction" method="{1}">
             <result name="success" type="redirect">/frame.jsp</result>
             <result name="input">/index.jsp</result>
         </action>
-
-
     </package>
+    <package name="department" extends="parent" strict-method-invocation="false" namespace="/department">
+        <action name="*" class="departmentAction" method="{1}">
+            <result name="find_All">/jsp/department/list.jsp</result>
+        </action>
+    </package>
+
 </struts>
 
 

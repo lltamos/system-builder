@@ -3,7 +3,9 @@ package org.llsmp.model.dao.impl;
 import org.llsmp.model.dao.EmployeeDao;
 import org.llsmp.model.entity.Employee;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -24,14 +26,25 @@ public class EmployeeDaoImpl extends HibernateDaoSupport implements EmployeeDao 
      * @return 结果
      */
     public Employee findByUserNameAndPass(Employee employee) {
-        System.out.println(employee.getUsername() + "/n" + employee.getPassword());
         String hql = "select  e from org.llsmp.model.entity.Employee e where e.username=? and e.password =?";
         List employeeList = this.getHibernateTemplate().find(hql, employee.getUsername(), employee.getPassword());
-
         if (employeeList.size() > 0) {
             return (Employee) employeeList.get(0);
         }
 
         return null;
+    }
+
+    /**
+     * @param employee 需要保存的员工
+     */
+    public boolean saveEmployee(Employee employee) {
+        try {
+            this.getHibernateTemplate().save(employee);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+
     }
 }

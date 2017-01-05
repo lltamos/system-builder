@@ -37,6 +37,19 @@ public class Employee {
     @JoinColumn(name = "did")
     private Department department;
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "eid=" + eid +
+                ", ename='" + ename + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
+                ", joinDate=" + joinDate +
+                ", eno='" + eno + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 
     public Integer getEid() {
         return eid;

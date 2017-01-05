@@ -22,10 +22,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     /**
      * 根据用户名密码查询用户
      *
-     * @param employee
-     * @return
+     * @param employee 员工
      */
     public Employee login(Employee employee) {
         return employeeDao.findByUserNameAndPass(employee);
+    }
+
+    public boolean addEmployee(Employee employee) {
+        return employeeDao.saveEmployee(employee);
     }
 }

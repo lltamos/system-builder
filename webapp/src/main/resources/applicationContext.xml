@@ -66,13 +66,16 @@
 
     <!--action-->
     <bean id="employeeAction" class="org.llsmp.model.action.EmployeeAction" scope="prototype"/>
-
+    <bean id="departmentAction" class="org.llsmp.model.action.DepartmentAction" scope="prototype"/>
     <!--dao-->
     <bean id="employeeDao" class="org.llsmp.model.dao.impl.EmployeeDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
+    <bean id="departmentDao" class="org.llsmp.model.dao.impl.DepartmentDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <!--service-->
     <bean id="employeeService" class="org.llsmp.model.server.impl.EmployeeServiceImpl"/>
+    <bean id="departmentService" class="org.llsmp.model.server.impl.DepartmentServiceImpl"/>
 </beans>

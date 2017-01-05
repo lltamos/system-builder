@@ -13,4 +13,6 @@ import org.llsmp.model.entity.Employee;
  */
 public interface EmployeeService {
     Employee login(Employee employee);
+
+    boolean addEmployee(Employee employee);
 }

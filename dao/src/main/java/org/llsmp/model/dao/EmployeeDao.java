@@ -13,4 +13,6 @@ import org.llsmp.model.entity.Employee;
  */
 public interface EmployeeDao  {
     Employee findByUserNameAndPass(Employee employee);
+
+    boolean saveEmployee(Employee employee);
 }

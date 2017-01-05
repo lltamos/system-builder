@@ -28,11 +28,24 @@ public class EmployeeAction extends SuperAction implements ModelDriven<Employee>
         System.out.println("login....");
         Employee existEmployee = employeeService.login(employee);
 
-        if (existEmployee==null){
+        if (existEmployee == null) {
             this.addActionError("error！");
             return INPUT;
+        } else {
+            session.setAttribute("existEmployee", existEmployee);
+            return SUCCESS;
+        }
+
+    }
+
+    /**
+     * 添加员工action
+     */
+    public String addEmployee() {
+        boolean b = employeeService.addEmployee(employee);
+        if (b){
+            return "add_employee_success";
         }else {
-            session.setAttribute("existEmployee",existEmployee);
             return SUCCESS;
         }
 

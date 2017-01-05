@@ -10,7 +10,7 @@
 
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path ;
 %>
 <!doctype html>
 <html>
@@ -19,11 +19,12 @@
 </head>
 <frameset rows="80,*">
 
-    <frame name="top" src="frame/top.html">
+
+    <frame name="top" src="<%=basePath%>/frame/top.jsp">
     <frameset cols="150,*" id="main">
 
-        <frame src="frame/left.html">
-        <frame name="right" src="frame/right.html">
+        <frame src="<%=basePath%>/frame/left.jsp">
+        <frame name="right" src="<%=basePath%>/frame/right.jsp">
     </frameset>
 </frameset>
 </html>
