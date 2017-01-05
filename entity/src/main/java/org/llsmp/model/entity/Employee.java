@@ -30,7 +30,7 @@ public class Employee {
     private String eno;//员工编号
     @Column(name = "username")
     private String username;
-    @Column 
+    @Column
     private String password;
     //所属部门
     @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)
