@@ -6,6 +6,7 @@ import org.llsmp.model.entity.Department;
 import org.llsmp.model.entity.PageBean;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
         List<Long> list = (List<Long>) this.getHibernateTemplate().find(hql);
 
         if (list.size() > 0) {
-            return  list.get(0).intValue();
+            return list.get(0).intValue();
         }
         return 0;
     }
@@ -39,5 +40,25 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
         DetachedCriteria criteria = DetachedCriteria.forClass(Department.class);
         List<Department> byCriteria = (List<Department>) this.getHibernateTemplate().findByCriteria(criteria, begin, pageBean.getPageSize());
         return byCriteria;
+    }
+
+    /**
+     * 保存部门
+     *
+     * @param department 需要保存的部门
+     */
+    public void saveDeparment(Department department) {
+        Serializable save = this.getHibernateTemplate().save(department);
+        System.out.println(save.toString() + "Serializable");
+    }
+
+    /**
+     * 查询所有部门
+     */
+    public List<Department> findAll() {
+        String hql = "select e from  org.llsmp.model.entity.Department e";
+        List<Department> departments = (List<Department>) this.getHibernateTemplate().find(hql);
+
+        return departments;
     }
 }

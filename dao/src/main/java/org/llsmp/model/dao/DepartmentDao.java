@@ -18,4 +18,9 @@ public interface DepartmentDao {
     int findCount();
 
     List<Department> findByPage(int begin, PageBean<Department> pageBean);
+
+   void saveDeparment(Department department);
+
+
+    List<Department> findAll();
 }

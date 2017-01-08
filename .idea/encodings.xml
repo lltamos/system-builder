@@ -6,9 +6,9 @@
     <file url="file://$PROJECT_DIR$/entity" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/webapp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/webapp/src/main/webapp/frame/addDepartment.jsp" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/webapp/src/main/webapp/frame/addEmployee.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/webapp/src/main/webapp/frame/dtree.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/webapp/src/main/webapp/jsp/department/addDepartment.jsp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/webapp/src/main/webapp/jsp/department/list.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/webapp/src/main/webapp/jsp/employee/addEmployee.jsp" charset="UTF-8" />
   </component>
 </project>

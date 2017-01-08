@@ -17,30 +17,48 @@ import javax.annotation.Resource;
  * @mail llsmpsvn@gmail.com
  * @date on 2017/1/5
  */
-public class DepartmentAction extends SuperAction implements ModelDriven {
+public class DepartmentAction extends SuperAction implements ModelDriven<Department> {
 
     private Department department = new Department();
     private int currPage = 1;
     @Resource
     private DepartmentService departmentService;
 
-
-    public void setCurrentPage(int currPage) {
-        this.currPage = currPage;
+    public Department getModel() {
+        return department;
     }
 
 
+    public void setCurrPage(int currPage) {
+        this.currPage = currPage;
+    }
 
+    /**
+     * 分页部门查询
+     */
     public String findAll() {
-        System.out.println("findAll"+currPage);
+
 
         PageBean<Department> pageBean = departmentService.findByPage(currPage);
 
         ActionContext.getContext().getValueStack().push(pageBean);
+
         return "find_All";
     }
 
-    public Object getModel() {
-        return department;
+    /**
+     * 添加部门
+     */
+    public String addDepartment() {
+        departmentService.savePartment(department);
+        return "department_save_success";
     }
+
+    /**
+     * 跳转添加部门界面
+     */
+    public String skipeSaveUI() {
+        return "skip_save_ui";
+    }
+
 }

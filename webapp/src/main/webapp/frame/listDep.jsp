@@ -25,7 +25,7 @@
         <td align="center" style="font-size:24px; color:#666"> 部门管理</td>
     </tr>
     <tr>
-        <td align="right" > <a href="<%=basePath%>/frame/addDepartment.jsp">添加</a></td>
+        <td align="right" > <a href="<%=basePath%>/jsp/department/addDepartment.jsp">添加</a></td>
     </tr>
 </table>
 <br/>

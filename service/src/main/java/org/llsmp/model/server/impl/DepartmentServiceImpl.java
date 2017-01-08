@@ -4,6 +4,8 @@ import org.llsmp.model.dao.DepartmentDao;
 import org.llsmp.model.entity.Department;
 import org.llsmp.model.entity.PageBean;
 import org.llsmp.model.server.DepartmentService;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -40,5 +42,14 @@ public class DepartmentServiceImpl implements DepartmentService {
         List<Department> list = departmentDao.findByPage(begin, pageBean);
         pageBean.setData(list);
         return pageBean;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void savePartment(Department department) {
+        departmentDao.saveDeparment(department);
+    }
+
+    public List<Department> findAll() {
+        return departmentDao.findAll();
     }
 }

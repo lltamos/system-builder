@@ -1,6 +1,8 @@
 package org.llsmp.model.server;
 
+import org.llsmp.model.entity.Department;
 import org.llsmp.model.entity.Employee;
+import org.llsmp.model.entity.PageBean;
 
 /**
  * <p>Title:${type_inName}<p/>
@@ -15,4 +17,8 @@ public interface EmployeeService {
     Employee login(Employee employee);
 
     boolean addEmployee(Employee employee);
+
+    Employee getEmployeeBySid(Integer eid);
+
+    PageBean<Employee> findByPage(int currPage);
 }

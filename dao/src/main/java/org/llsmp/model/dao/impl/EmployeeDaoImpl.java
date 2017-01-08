@@ -1,7 +1,10 @@
 package org.llsmp.model.dao.impl;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.llsmp.model.dao.EmployeeDao;
+import org.llsmp.model.entity.Department;
 import org.llsmp.model.entity.Employee;
+import org.llsmp.model.entity.PageBean;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,9 +45,40 @@ public class EmployeeDaoImpl extends HibernateDaoSupport implements EmployeeDao 
         try {
             this.getHibernateTemplate().save(employee);
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
 
     }
+
+    public Employee queryEmployeeBySid(Integer eid) {
+        String hql = "select e from org.llsmp.model.entity.Employee e where e.eid=?";
+        List employees = this.getHibernateTemplate().find(hql, eid);
+        return (Employee) employees.get(0);
+    }
+
+    //查询总记录
+    public int findCount() {
+        String hql = "select count (*) from org.llsmp.model.entity.Employee";
+        List<Long> employees = (List<Long>) this.getHibernateTemplate().find(hql);
+
+        if (employees.size() > 0) {
+            return employees.get(0).intValue();
+        }
+        return 0;
+    }
+    /**
+     * 分页查询部门
+     *
+     * @param begin    开始位置
+     * @param employeePageBean 分页参数
+     * @return 返回部门结果
+     */
+    public List<Employee> findPage(int begin, PageBean<Employee> employeePageBean) {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Employee.class);
+        List<Employee> byCriteria = (List<Employee>) this.getHibernateTemplate().findByCriteria(detachedCriteria, begin, employeePageBean.getPageSize());
+        return byCriteria;
+    }
+
 }

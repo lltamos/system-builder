@@ -20,6 +20,7 @@
         }
 
     </style>
+    <script src="<%=basePath%>/js/jquery-1.9.1.js" type="text/javascript"></script>
 </head>
 <body>
 <table border="0" width="900px">
@@ -42,7 +43,7 @@
     <s:iterator value="data" var="d">
         <tr>
             <td align="center"><s:property value="#d.dname"/></td>
-            <td align="center"><a href="addDept.html">添加</a></td>
+            <td align="center"><a href="<%=basePath%>/department/skipeSaveUI.action">添加</a></td>
         </tr>
     </s:iterator>
 
@@ -58,15 +59,17 @@
             <span>
                 <s:if test="currentPage!=1">
                     <a href="<%=basePath%>/department/findAll.action?currPage=1">[首页]</a>&nbsp;&nbsp;
-                    <a href="<%=basePath%>/department/findAll.action?currPage=<s:property value="currentPage"/>-1">[上一页]</a>&nbsp;&nbsp;
+                    <a href="<%=basePath%>/department/findAll.action?currPage=<s:property value="currentPage-1"/>">[上一页]</a>&nbsp;&nbsp;
                 </s:if>
                   <s:if test="currentPage!=totalPage">
-                      <a href="<%=basePath%>/department/findAll.action?currPage=<s:property value="currentPage"/>+1">[下一页]</a>&nbsp;&nbsp;
+                      <a href="<%=basePath%>/department/findAll.action?currPage=<s:property value="currentPage+1"/>">[下一页]</a>&nbsp;&nbsp;
                       <a href="<%=basePath%>/department/findAll.action?currPage=<s:property value="totalPage"/>">[尾页]</a>&nbsp;&nbsp;
                   </s:if>
             </span>
         </td>
     </tr>
 </table>
+
 </body>
+
 </html>
