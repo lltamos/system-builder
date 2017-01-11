@@ -21,4 +21,6 @@ public interface EmployeeService {
     Employee getEmployeeBySid(Integer eid);
 
     PageBean<Employee> findByPage(int currPage);
+
+    void update(Employee employee);
 }

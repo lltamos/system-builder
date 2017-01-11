@@ -3,6 +3,7 @@ package org.llsmp.model.action;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.struts2.ServletActionContext;
 import org.llsmp.model.entity.Department;
 import org.llsmp.model.entity.PageBean;
 import org.llsmp.model.server.DepartmentService;
@@ -10,6 +11,7 @@ import org.llsmp.model.server.EmployeeService;
 import org.llsmp.model.entity.Employee;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -59,14 +61,29 @@ public class EmployeeAction extends SuperAction implements ModelDriven<Employee>
         return "save_sucess";
 
     }
+    /**
+     * 修改员工
+     */
+    public String updateEmployee() {
 
+        System.out.println( employee.toString());
+        System.out.println( employee.getDepartment().getDid()+"");
+
+        employeeService.update(employee);
+        return "update_sucess";
+
+    }
 
     /**
      * 编辑员工
      */
-    public String editEmployee() {
-        System.out.println("编辑员工");
-        return NONE;
+    public String editEmployeeUI() {
+        employee = employeeService.getEmployeeBySid(employee.getEid());
+        List<Department> list = departmentService.findAll();
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        session.setAttribute("list", list);
+        session.setAttribute("li","session");
+        return "edit_employee";
     }
 
     /**

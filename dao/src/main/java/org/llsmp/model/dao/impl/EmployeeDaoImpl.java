@@ -81,4 +81,8 @@ public class EmployeeDaoImpl extends HibernateDaoSupport implements EmployeeDao 
         return byCriteria;
     }
 
+    public void update(Employee employee) {
+        this.getHibernateTemplate().update(employee);
+    }
+
 }

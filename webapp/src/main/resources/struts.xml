@@ -29,6 +29,8 @@
             <result name="find_all">/jsp/employee/listEmployee.jsp</result>
             <result name="skip_add_save">/jsp/employee/addEmployee.jsp</result>
             <result name="save_sucess" type="redirect">findAll.action</result>
+            <result name="edit_employee">/jsp/employee/editEmployee.jsp</result>
+            <result name="update_sucess" type="redirect">findAll.action</result>
         </action>
     </package>
     <package name="department" extends="parent" strict-method-invocation="false" namespace="/department">
@@ -36,7 +38,6 @@
             <result name="find_All">/jsp/department/list.jsp</result>
             <result name="skip_save_ui">/jsp/department/addDepartment.jsp</result>
             <result name="department_save_success" type="redirect">findAll.action</result>
-            <result name="skip_edit_sucess">/</result>
         </action>
     </package>
 

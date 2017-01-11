@@ -65,4 +65,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         pageBean.setData(departments);
         return pageBean;
     }
+
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void update(Employee employee) {
+        employeeDao.update(employee);
+    }
 }

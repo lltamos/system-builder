@@ -54,7 +54,7 @@
             <td align="center"><s:property value="#e.birthday"/></td>
             <td align="center"><s:property value="#e.joinDate"/></td>
             <td align="center"><s:property value="#e.department.dname"/></td>
-            <td align="center"><a href="<%=basePath%>/employee/editEmployee.action?"><img
+            <td align="center"><a href="<%=basePath%>/employee/editEmployeeUI.action?eid=<s:property value="#e.eid"/>"><img
                     src="<%=basePath%>/images/bianji.png"/></a></td>
         </tr>
     </s:iterator>

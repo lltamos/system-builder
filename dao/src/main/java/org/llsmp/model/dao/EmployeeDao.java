@@ -25,4 +25,6 @@ public interface EmployeeDao {
     int findCount();
 
     List<Employee> findPage(int begin, PageBean<Employee> employeePageBean);
+
+    void update(Employee employee);
 }
